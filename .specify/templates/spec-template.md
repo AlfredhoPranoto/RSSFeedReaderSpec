@@ -5,6 +5,12 @@
 **Status**: Draft  
 **Input**: User description: "$ARGUMENTS"
 
+## Constitution Compliance (mandatory)
+
+- Each spec MUST include a short statement describing how the feature complies with the constitution principles: **Security & Data Handling**, **Maintainability & Simplicity**, **Testability & Quality**, **Observability & Error Handling**, and **Versioning & Review Discipline**.
+- If the feature adds network operations, include a linked security plan (threat model, sanitization, timeouts) and explicit manual/automatic refresh semantics.
+- If Blazor is used, the spec MUST confirm the Blazor template cleanup (removed demo pages) and routing verification has been completed.
+
 ## User Scenarios & Testing *(mandatory)*
 
 <!--

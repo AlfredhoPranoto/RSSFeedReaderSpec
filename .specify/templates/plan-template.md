@@ -28,8 +28,14 @@
 **Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
 
 ## Constitution Check
-
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+
+Constitution compliance (minimum checks required by the project's constitution):
+
+- **Security**: If the feature includes network operations (e.g., feed fetching), the plan MUST include a short threat model, HTTP client configuration (timeouts/cancellation), content-size limits, and a sanitization strategy (e.g., HtmlSanitizer). The plan MUST document whether fetching is manual or background.
+- **Maintainability**: The plan MUST document that Blazor demo pages were removed and include the selected project structure. If using Blazor, confirm `@page` routing is unambiguous.
+- **Testing**: The plan MUST list required unit and integration tests for the feature (test runner and key test locations).
+- **CI & PR**: The plan MUST reference required CI checks and reviewer count required by the constitution.
 
 [Gates determined based on constitution file]
 
