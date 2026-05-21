@@ -1,30 +1,50 @@
 # Quickstart: Run Add Subscriptions MVP (Local)
 
-This quickstart documents the minimal steps to run the MVP locally once the `backend` and `frontend` projects are created.
+## Prerequisites
+- .NET 8 SDK — version pinned to `8.0.421` via `global.json`
+- `dotnet` CLI on PATH (Windows: `C:\Program Files\dotnet\dotnet.exe`)
 
-Prerequisites
-- .NET SDK (pin exact version in `global.json` — recommended: .NET 8.x)
-- `dotnet` CLI available on PATH
+## Default ports
+| Service | URL |
+|---------|-----|
+| Backend API | `http://localhost:5151` |
+| Frontend UI | `http://localhost:5213` |
 
-Default ports
-- Backend API: `http://localhost:5151`
-- Frontend UI: `http://localhost:5213`
+## Start the backend
 
-Backend (expected commands after project scaffold)
-
-```powershell
-dotnet build backend/RSSFeedReader.Api/RSSFeedReader.Api.csproj
+```bash
 dotnet run --project backend/RSSFeedReader.Api --urls "http://localhost:5151"
 ```
 
-Frontend (expected commands after project scaffold)
+Swagger UI available at: `http://localhost:5151/swagger`
 
-```powershell
+## Start the frontend
+
+```bash
 dotnet run --project frontend/RSSFeedReader.UI --urls "http://localhost:5213"
 ```
 
-Configuration notes
-- Ensure `frontend/wwwroot/appsettings.json` contains the correct backend API base URL, for example:
+Then open `http://localhost:5213/subscriptions`.
+
+## Run all tests
+
+```bash
+# Unit tests (backend)
+dotnet test backend/tests/Unit/RSSFeedReader.Api.Tests.csproj
+
+# Component tests (bUnit, frontend)
+dotnet test frontend/tests/RSSFeedReader.UI.Tests.csproj
+
+# Integration tests
+dotnet test tests/integration/RSSFeedReader.Integration.Tests.csproj
+
+# Full solution
+dotnet test RSSFeedReader.sln
+```
+
+## Configuration
+
+`frontend/RSSFeedReader.UI/wwwroot/appsettings.json` sets the backend base URL:
 
 ```json
 {
@@ -32,4 +52,9 @@ Configuration notes
 }
 ```
 
-Before implementing or running the UI: remove Blazor demo pages (`Home.razor`, `Counter.razor`, `Weather.razor`) and verify routing to avoid ambiguous routes.
+CORS is configured in `backend/RSSFeedReader.Api/Program.cs` to allow `http://localhost:5213`.
+
+## Notes
+- Data is in-memory and lost when the backend restarts (MVP scope).
+- No HTTPS required for local development; use the `http` profile.
+

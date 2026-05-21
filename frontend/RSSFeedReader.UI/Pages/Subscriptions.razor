@@ -1,0 +1,124 @@
+@page "/subscriptions"
+@using RSSFeedReader.UI.Models
+@using RSSFeedReader.UI.Services
+@inject SubscriptionApiService ApiService
+
+<PageTitle>Subscriptions</PageTitle>
+
+<h1>Subscriptions</h1>
+
+<div class="mb-3">
+    <label for="feedUrl" class="form-label">Feed URL</label>
+    <div class="input-group">
+        <input id="feedUrl"
+               type="url"
+               class="form-control"
+               placeholder="https://example.com/feed"
+               @bind="newUrl"
+               @bind:event="oninput"
+               @onkeydown="HandleKeyDown" />
+        <button class="btn btn-primary"
+                type="button"
+                @onclick="AddSubscriptionAsync"
+                disabled="@(!IsValidUrl(newUrl) || isAdding)">
+            @(isAdding ? "Adding…" : "Add")
+        </button>
+    </div>
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="text-danger mt-1" role="alert">@errorMessage</div>
+    }
+</div>
+
+@if (isLoading)
+{
+    <p><em>Loading…</em></p>
+}
+else if (subscriptions.Count == 0)
+{
+    <p class="text-muted">No subscriptions yet. Add a feed URL above.</p>
+}
+else
+{
+    <ul class="list-group">
+        @foreach (var sub in subscriptions)
+        {
+            <li class="list-group-item">
+                <div class="fw-semibold">@sub.Url</div>
+                <small class="text-muted">Added: @sub.AddedAt</small>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private List<SubscriptionDto> subscriptions = new();
+    private string newUrl = string.Empty;
+    private bool isLoading = true;
+    private bool isAdding = false;
+    private string errorMessage = string.Empty;
+
+    private static bool IsValidUrl(string? url)
+    {
+        return !string.IsNullOrWhiteSpace(url)
+            && Uri.TryCreate(url.Trim(), UriKind.Absolute, out var uri)
+            && (uri.Scheme == "http" || uri.Scheme == "https");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadSubscriptionsAsync();
+    }
+
+    private async Task LoadSubscriptionsAsync()
+    {
+        isLoading = true;
+        errorMessage = string.Empty;
+        try
+        {
+            subscriptions = await ApiService.GetSubscriptionsAsync();
+        }
+        catch
+        {
+            errorMessage = "Failed to load subscriptions. Is the backend running?";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task AddSubscriptionAsync()
+    {
+        if (string.IsNullOrWhiteSpace(newUrl))
+            return;
+
+        isAdding = true;
+        errorMessage = string.Empty;
+        try
+        {
+            var added = await ApiService.AddSubscriptionAsync(newUrl.Trim());
+            if (added is not null)
+            {
+                subscriptions.Add(added);
+                newUrl = string.Empty;
+            }
+        }
+        catch
+        {
+            errorMessage = "Failed to add subscription. Please try again.";
+        }
+        finally
+        {
+            isAdding = false;
+        }
+    }
+
+    private async Task HandleKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await AddSubscriptionAsync();
+        }
+    }
+}

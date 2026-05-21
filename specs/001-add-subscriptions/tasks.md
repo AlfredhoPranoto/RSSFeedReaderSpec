@@ -8,24 +8,24 @@ description: "Tasks for Add Subscriptions (MVP)"
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-- [ ] T001 Create project skeleton: add `RSSFeedReader.sln`, `backend/RSSFeedReader.Api/`, `frontend/RSSFeedReader.UI/`
-- [ ] T002 Initialize backend project in `backend/RSSFeedReader.Api/` (ASP.NET Core Web API template)
-- [ ] T003 Initialize frontend project in `frontend/RSSFeedReader.UI/` (Blazor WebAssembly template)
-- [ ] T004 [P] Add repo tooling: create `global.json` (pin .NET SDK), add `.editorconfig` and basic CI workflow placeholder in `.github/workflows/ci.yml`
-- [ ] T005 Remove Blazor demo pages: delete `frontend/RSSFeedReader.UI/Pages/Home.razor`, `frontend/RSSFeedReader.UI/Pages/Counter.razor`, `frontend/RSSFeedReader.UI/Pages/Weather.razor` and verify only intended pages use `@page "/"`
-- [ ] T006 Verify port and routing configuration: update `frontend/RSSFeedReader.UI/wwwroot/appsettings.json`, `backend/RSSFeedReader.Api/Properties/launchSettings.json`, and confirm backend CORS settings in `backend/RSSFeedReader.Api/Program.cs`
+- [x] T001 Create project skeleton: add `RSSFeedReader.sln`, `backend/RSSFeedReader.Api/`, `frontend/RSSFeedReader.UI/`
+- [x] T002 Initialize backend project in `backend/RSSFeedReader.Api/` (ASP.NET Core Web API template)
+- [x] T003 Initialize frontend project in `frontend/RSSFeedReader.UI/` (Blazor WebAssembly template)
+- [x] T004 [P] Add repo tooling: create `global.json` (pin .NET SDK), add `.editorconfig` and basic CI workflow placeholder in `.github/workflows/ci.yml`
+- [x] T005 Remove Blazor demo pages: delete `frontend/RSSFeedReader.UI/Pages/Home.razor`, `frontend/RSSFeedReader.UI/Pages/Counter.razor`, `frontend/RSSFeedReader.UI/Pages/Weather.razor` and verify only intended pages use `@page "/"`
+- [x] T006 Verify port and routing configuration: update `frontend/RSSFeedReader.UI/wwwroot/appsettings.json`, `backend/RSSFeedReader.Api/Properties/launchSettings.json`, and confirm backend CORS settings in `backend/RSSFeedReader.Api/Program.cs`
 
 ---
 
 ## Phase 2: Foundational (Blocking prerequisites)
 
-- [ ] T007 [P] Create `backend/RSSFeedReader.Api/Models/Subscription.cs` (fields: `id`, `url`, `addedAt`)
-- [ ] T008 [P] Implement in-memory store `backend/RSSFeedReader.Api/Services/SubscriptionStore.cs` (add/list operations)
-- [ ] T009 [P] Register `SubscriptionStore` in DI and configure CORS in `backend/RSSFeedReader.Api/Program.cs`
-- [ ] T010 Implement API controller `backend/RSSFeedReader.Api/Controllers/SubscriptionsController.cs` with:
-  - `GET /api/subscriptions` → returns list per contract
-  - `POST /api/subscriptions` → accepts `{ "url": "..." }`, returns created subscription (201)
-- [ ] T011 Create backend unit tests in `backend/tests/Unit/SubscriptionStoreTests.cs` (xUnit): tests for add and list behavior
+- [x] T007 [P] Create `backend/RSSFeedReader.Api/Models/Subscription.cs` (fields: `id`, `url`, `addedAt`)
+- [x] T008 [P] Implement in-memory store `backend/RSSFeedReader.Api/Services/SubscriptionStore.cs` (add/list operations)
+- [x] T009 [P] Register `SubscriptionStore` in DI and configure CORS in `backend/RSSFeedReader.Api/Program.cs`
+- [x] T010 Implement API controller `backend/RSSFeedReader.Api/Controllers/SubscriptionsController.cs` with:
+    - `GET /api/subscriptions` → returns list per contract
+    - `POST /api/subscriptions` → accepts `{ "url": "..." }`, returns created subscription (201)
+- [x] T011 Create backend unit tests in `backend/tests/Unit/SubscriptionStoreTests.cs` (xUnit): tests for add and list behavior
 
 ---
 
@@ -35,20 +35,20 @@ description: "Tasks for Add Subscriptions (MVP)"
 
 **Independent Test**: Run the app locally, add a URL via the UI, and verify the new subscription appears in the list without page reload.
 
-- [ ] T012 [P] [US1] Add frontend DTO `frontend/RSSFeedReader.UI/Models/SubscriptionDto.cs`
-- [ ] T013 [P] [US1] Implement frontend service `frontend/RSSFeedReader.UI/Services/SubscriptionApiService.cs` to call backend endpoints
-- [ ] T014 [US1] Create `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor` (input field, Add button, list display)
-- [ ] T015 [US1] Wire UI to service and ensure immediate state update in `Subscriptions.razor`
-- [ ] T016 [US1] Add component tests `frontend/tests/SubscriptionsComponentTests.cs` (bUnit) verifying add behavior and list update
-- [ ] T017 [US1] Add integration test `tests/integration/AddSubscriptionFlowTests.cs` (POST -> GET verification) — optional if CI supports headless execution
+- [x] T012 [P] [US1] Add frontend DTO `frontend/RSSFeedReader.UI/Models/SubscriptionDto.cs`
+- [x] T013 [P] [US1] Implement frontend service `frontend/RSSFeedReader.UI/Services/SubscriptionApiService.cs` to call backend endpoints
+- [x] T014 [US1] Create `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor` (input field, Add button, list display)
+- [x] T015 [US1] Wire UI to service and ensure immediate state update in `Subscriptions.razor`
+- [X] T016 [US1] Add component tests `frontend/tests/SubscriptionsComponentTests.cs` (bUnit) verifying add behavior and list update
+- [X] T017 [US1] Add integration test `tests/integration/AddSubscriptionFlowTests.cs` (POST -> GET verification) — optional if CI supports headless execution
 
 ---
 
 ## Phase N: Polish & Cross-Cutting Concerns
 
-- [ ] T018 [P] Update documentation: `specs/001-add-subscriptions/quickstart.md` and top-level `README.md` with run steps
-- [ ] T019 [P] Security check: verify no HttpClient-based feed fetching code exists in MVP branches (scan `**/*HttpClient*` or search for `System.Net.Http` usage)
-- [ ] T020 [P] Run formatters/linters and ensure CI passes (configure `dotnet format` in CI)
+- [X] T018 [P] Update documentation: `specs/001-add-subscriptions/quickstart.md` and top-level `README.md` with run steps
+- [X] T019 [P] Security check: verify no HttpClient-based feed fetching code exists in MVP branches (scan `**/*HttpClient*` or search for `System.Net.Http` usage)
+- [X] T020 [P] Run formatters/linters and ensure CI passes (configure `dotnet format` in CI)
 
 ---
 

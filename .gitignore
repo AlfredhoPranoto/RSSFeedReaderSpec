@@ -1,1 +1,36 @@
 StakeholderDocuments/*
+
+# .NET build outputs
+bin/
+obj/
+*.user
+*.suo
+
+# NuGet
+*.nupkg
+*.snupkg
+project.lock.json
+.nuget/
+
+# Logs
+*.log
+logs/
+
+# Environment / secrets
+.env
+.env.*
+appsettings.*.local.json
+
+# macOS / Windows
+.DS_Store
+Thumbs.db
+
+# VS Code / JetBrains
+.vscode/
+.idea/
+*.iml
+
+# Test results
+TestResults/
+coverage/
+*.coverage
