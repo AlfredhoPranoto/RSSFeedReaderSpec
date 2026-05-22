@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{509D4EC4-067F-47E2-8BF1-A55FD06C6545}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSSFeedReader.Api", "backend\RSSFeedReader.Api\RSSFeedReader.Api.csproj", "{A3A0F32A-8B4B-45A3-BEBE-5BA6C6D9195D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "frontend", "frontend", "{E7BADA6B-2EC4-4673-93C9-3BE6E201B2DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSSFeedReader.UI", "frontend\RSSFeedReader.UI\RSSFeedReader.UI.csproj", "{5E8A418D-0C7B-4210-9FAC-2EE71B654663}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5314963F-CFDE-4FE6-A163-17A5015B402B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSSFeedReader.Api.Tests", "backend\tests\Unit\RSSFeedReader.Api.Tests.csproj", "{4DA10090-8439-4BA7-A5F7-75837556964E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSSFeedReader.UI.Tests", "frontend\tests\RSSFeedReader.UI.Tests.csproj", "{2E7B0C50-CBF1-49B6-B999-AF12D7446CB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AB55E1E7-E65B-4E3D-A0E5-90F1A16A1E98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSSFeedReader.Integration.Tests", "tests\integration\RSSFeedReader.Integration.Tests.csproj", "{2E450248-6A29-49EE-B6F5-6364CF8C968F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A3A0F32A-8B4B-45A3-BEBE-5BA6C6D9195D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3A0F32A-8B4B-45A3-BEBE-5BA6C6D9195D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3A0F32A-8B4B-45A3-BEBE-5BA6C6D9195D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3A0F32A-8B4B-45A3-BEBE-5BA6C6D9195D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E8A418D-0C7B-4210-9FAC-2EE71B654663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E8A418D-0C7B-4210-9FAC-2EE71B654663}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E8A418D-0C7B-4210-9FAC-2EE71B654663}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E8A418D-0C7B-4210-9FAC-2EE71B654663}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DA10090-8439-4BA7-A5F7-75837556964E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DA10090-8439-4BA7-A5F7-75837556964E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DA10090-8439-4BA7-A5F7-75837556964E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DA10090-8439-4BA7-A5F7-75837556964E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E7B0C50-CBF1-49B6-B999-AF12D7446CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E7B0C50-CBF1-49B6-B999-AF12D7446CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E7B0C50-CBF1-49B6-B999-AF12D7446CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E7B0C50-CBF1-49B6-B999-AF12D7446CB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E450248-6A29-49EE-B6F5-6364CF8C968F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E450248-6A29-49EE-B6F5-6364CF8C968F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E450248-6A29-49EE-B6F5-6364CF8C968F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E450248-6A29-49EE-B6F5-6364CF8C968F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A3A0F32A-8B4B-45A3-BEBE-5BA6C6D9195D} = {509D4EC4-067F-47E2-8BF1-A55FD06C6545}
+		{5E8A418D-0C7B-4210-9FAC-2EE71B654663} = {E7BADA6B-2EC4-4673-93C9-3BE6E201B2DC}
+		{5314963F-CFDE-4FE6-A163-17A5015B402B} = {509D4EC4-067F-47E2-8BF1-A55FD06C6545}
+		{4DA10090-8439-4BA7-A5F7-75837556964E} = {5314963F-CFDE-4FE6-A163-17A5015B402B}
+		{2E7B0C50-CBF1-49B6-B999-AF12D7446CB0} = {E7BADA6B-2EC4-4673-93C9-3BE6E201B2DC}
+		{2E450248-6A29-49EE-B6F5-6364CF8C968F} = {AB55E1E7-E65B-4E3D-A0E5-90F1A16A1E98}
+	EndGlobalSection
+EndGlobal

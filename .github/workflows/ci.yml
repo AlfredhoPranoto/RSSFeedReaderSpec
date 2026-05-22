@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main", "main-feat/**" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore RSSFeedReader.sln
+
+      - name: Build
+        run: dotnet build RSSFeedReader.sln --no-restore --configuration Release
+
+      - name: Run backend unit tests
+        run: dotnet test backend/tests/Unit/RSSFeedReader.Api.Tests.csproj --no-build --configuration Release --verbosity normal
+
+      - name: Run frontend component tests
+        run: dotnet test frontend/tests/RSSFeedReader.UI.Tests.csproj --no-build --configuration Release --verbosity normal
+
+      - name: Run integration tests
+        run: dotnet test tests/integration/RSSFeedReader.Integration.Tests.csproj --no-build --configuration Release --verbosity normal
+
+      - name: Format check
+        run: dotnet format RSSFeedReader.sln --verify-no-changes
